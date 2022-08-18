@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "cats#index"
-  resources :cats, :breeds, only: %i[index destroy]
+  resources :cats, :breeds, only: %i[index destroy show]
   
 end
