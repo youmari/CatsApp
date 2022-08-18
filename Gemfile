@@ -33,6 +33,11 @@ gem "jbuilder"
 # Devise is allows you to add authentication to your app
 gem 'devise'
 
+# Rest-client for fetching cats data from the api
+gem 'rest-client'
+
+# Pagy a gem for pagination 
+gem 'pagy', '~> 5.10' 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
