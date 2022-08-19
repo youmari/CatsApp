@@ -1,5 +1,5 @@
 class Breed < ApplicationRecord
-  self.primary_key = "id"
+  self.primary_key = 'id'
   validates :id, uniqueness: true
   validates :name, :origin, presence: true
   has_many :cats, dependent: :destroy
