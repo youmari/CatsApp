@@ -2,5 +2,8 @@
   <h3 class="ms-2 me-auto">
    <%= link_to( breed.name, cat_path(breed.id)) %>
   </h3>
+  <% if can? :destroy, breed %>
+    <%= button_to "Delete", breed_path(breed.id), method: :delete, class: 'btn btn-danger me-4' %>
+  <% end %>
   <span class="badge bg-primary rounded-pill"> <%= @total_count[breed.id] %> </span>
 </li>
