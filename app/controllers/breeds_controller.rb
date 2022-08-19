@@ -5,6 +5,11 @@ class BreedsController < ApplicationController
     @total_count = Breed.total_cats_grouped_by_breed
   end
 
+  def destroy
+    Breed.find(params[:id]).destroy!
+    redirect_to breeds_path
+  end
+
   private
   def capitalize
     if params[:search]

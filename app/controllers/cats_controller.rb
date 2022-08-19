@@ -7,4 +7,9 @@ class CatsController < ApplicationController
   def show
     @cats = Cat.filter_cats_by_breed(params[:id])
   end
+
+  def destroy
+    Cat.find(params[:id]).destroy!
+    redirect_to cats_path
+  end
 end
