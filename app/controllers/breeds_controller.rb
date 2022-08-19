@@ -1,4 +1,5 @@
 class BreedsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @search_breed = Breed.where("name LIKE ?", "%#{capitalize}%") if Breed.find_by("name LIKE ?", "%#{capitalize}%")
     @breeds = @search_breed || Breed.all.includes(:cats).order(:name)

@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+      <%= link_to "Cats", root_path, class: "navbar-brand" %>
+    <div>
+       <div class="nav-item dropdown d-flex">
+             <% if current_user %>
+                <a class="nav-link dropdown-toggle pe-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= current_user.email.capitalize %>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item">
+                  <% if current_user %>
+                    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+                  <% else %>
+                    <%= link_to "Sign In", new_user_session_path %>
+                  <% end %>
+                  </a></li>
+                </ul>
+              <% else %>
+                <%= link_to "Sign In", new_user_session_path, class: 'me-3 btn btn-info'%>
+                <%= link_to "Sign Up", new_user_registration_path, class: 'me-3 btn btn-secondary'%>
+              <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navigation Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Cats", cats_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Breeds", breeds_path, class: "nav-link active" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
