@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_150855) do
   enable_extension "plpgsql"
 
   create_table "breeds", id: false, force: :cascade do |t|
-    t.string "id"
+    t.string "id", null: false
     t.string "name"
     t.string "origin"
     t.datetime "created_at", null: false
