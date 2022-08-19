@@ -38,6 +38,10 @@ gem 'rest-client'
 
 # Pagy a gem for pagination 
 gem 'pagy', '~> 5.10' 
+
+# Cancancan for 
+gem 'cancancan'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
