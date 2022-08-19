@@ -1,0 +1,6 @@
+<%= render "search_form" %>
+<ul class="list-group ">
+  <% @breeds.each do |breed| %>
+    <%= render "breed", breed: breed %>
+  <% end %>
+</ul>
