@@ -19,3 +19,7 @@ data.each do |cat|
   end
   Cat.create(id: cat['id'], url: cat['url'], width: cat['width'], height: cat['height'], breed_id: cat["breeds"][0]["id"])
 end
+
+unless User.find_by(email: 'admin@oddcamp.com')
+  User.create(email: 'admin@oddcamp.com', password: 'password', password_confirmation: 'password', role: 'admin')
+end
