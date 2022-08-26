@@ -9,7 +9,7 @@ class BreedsController < ApplicationController
 
   def destroy
     Breed.find(params[:id]).destroy!
-    redirect_to breeds_path
+    redirect_to breeds_path, notice: "The Breed and it's cats was deleted successfully"
   end
 
   private

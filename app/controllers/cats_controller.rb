@@ -10,6 +10,6 @@ class CatsController < ApplicationController
 
   def destroy
     Cat.find(params[:id]).destroy!
-    redirect_to cats_path
+    redirect_to cats_path, notice: 'The Cat was deleted successfully'
   end
 end
