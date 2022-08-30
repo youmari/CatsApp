@@ -1,9 +1,11 @@
-<li class="list-group-item d-flex justify-content-between align-items-start">
-  <h3 class="ms-2 me-auto">
-   <%= link_to( breed.name, cat_path(breed.id)) %>
-  </h3>
-  <% if can? :destroy, breed %>
-    <%= button_to "Delete", breed_path(breed.id), method: :delete, class: 'btn btn-danger me-4' %>
-  <% end %>
-  <span class="badge bg-primary rounded-pill"> <%= @total_count[breed.id] %> </span>
-</li>
+<%= turbo_frame_tag breed do %>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <h3 class="ms-2 me-auto">
+    <%= link_to( breed.name, cat_path(breed.id), data: { turbo_frame: "_top" }) %>
+    </h3>
+    <% if can? :destroy, breed %>
+      <%= button_to "Delete", breed_path(breed.id), method: :delete, class: 'btn btn-danger me-4' %>
+    <% end %>
+    <span class="badge bg-primary rounded-pill"> <%= @total_count[breed.id] %> </span> 
+  </li>
+<% end %>

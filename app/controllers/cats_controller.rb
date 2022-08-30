@@ -9,7 +9,10 @@ class CatsController < ApplicationController
   end
 
   def destroy
-    Cat.find(params[:id]).destroy!
-    redirect_to cats_path, notice: 'The Cat was deleted successfully'
+    @cat = Cat.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to cats_path, notice: 'Cats was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Cats was successfully destroyed.' }
+    end
   end
 end

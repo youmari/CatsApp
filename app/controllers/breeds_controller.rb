@@ -10,8 +10,11 @@ class BreedsController < ApplicationController
   end
 
   def destroy
-    Breed.find(params[:id]).destroy!
-    redirect_to breeds_path, notice: 'The Breed and its cats was deleted successfully'
+    @breed = Breed.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to breeds_path, notice: 'Breed and its cats was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Breed and its cats was successfully destroyed.' }
+    end
   end
 
   private

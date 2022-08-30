@@ -1,12 +1,14 @@
-<div class="card p-4 m-3">
-  <%= image_tag cat.url, alt:'cat picture', class: 'card-img-top p-2 rounded mx-auto d-block', style: 'height: 300px; width: 300px;' %>
-  <div class="card-body">
-    <h5 class="card-title"><%= link_to( cat.breed.name , cat_path(cat.breed_id)) %> </h5>
+<%= turbo_frame_tag cat do %>
+  <div class="card p-4 m-3">
+    <%= image_tag cat.url, alt:'cat picture', class: 'card-img-top p-2 rounded mx-auto d-block', style: 'height: 300px; width: 300px;' %>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to( cat.breed.name , cat_path(cat.breed_id), data: { turbo_frame: '_top' }) %> </h5>
+    </div>
+    <% if can? :destroy, cat %>
+      <%= button_to "Delete", cat_path(cat.id), method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+    <div class="card-footer">
+      <small class="text-muted"> created at <%= cat.created_at %></small>
+    </div>
   </div>
-  <% if can? :destroy, cat %>
-    <%= button_to "Delete", cat_path(cat.id), method: :delete, class: 'btn btn-danger' %>
-  <% end %>
-  <div class="card-footer">
-    <small class="text-muted"> created at <%= cat.created_at %></small>
-  </div>
-</div>
+<% end %>

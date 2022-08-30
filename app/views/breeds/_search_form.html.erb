@@ -1,8 +1,5 @@
-<form id="search" action="<%= breeds_path %>">
+<%= form_with url: breeds_path, method: :get, data: { controller: "form-submission", turbo_frame: "breeds" } do |form| %>
   <div class="input-group">
-    <%= text_field_tag :search, params[:search], id: 'content_search_term',class: 'form-control', placeholder:'Search...' %>
-    <div class="input-group-append">
-      <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
-    </div>
+    <%= form.text_field :search, data: { action: "input->form-submission#search" }, id: 'content_search_term',class: 'form-control', placeholder:'Search...' %>
   </div>
-</form>
+<% end %>

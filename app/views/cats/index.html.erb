@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-center row-cols-1 row-cols-md-3 g-4 p-5">
-  <% @cats.each do |cat| %>
-    <%= render "cat", cat: cat %>
+  <%= turbo_frame_tag "cats" do %>
+    <%= render @cats %>
   <% end %>
 </div>
