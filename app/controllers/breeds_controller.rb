@@ -1,9 +1,11 @@
 class BreedsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @search_breed = Breed.where('name LIKE ?', "%#{capitalize}%").order(:name) if Breed.find_by('name LIKE ?',
-                                                                                                "%#{capitalize}%")
-    @breeds = @search_breed || Breed.order(:name)
+    @breeds = if Breed.find_by('name LIKE ?', "%#{capitalize}%")
+                Breed.where('name LIKE ?', "%#{capitalize}%").order(:name)
+              else
+                Breed.order(:name)
+              end
     @total_count = Breed.total_cats_grouped_by_breed
   end
 
